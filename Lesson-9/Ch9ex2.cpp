@@ -1,22 +1,24 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 class Human
 {
 	private:
 		int age;
-		string name;
 	public:
-		int GetAge()
+	
+		void SetAge(int inputAge)
 		{
-			return age;
+			age = inputAge;
 
 		}
-
-		void SetAge(int& humansAge)
+	
+		int GetAge() // Lie about age if over 30
 		{
-			age = humansAge;
+			if(age > 30)
+				return (age - 2);
+			else
+				return age;
 
 		}
 
@@ -24,13 +26,14 @@ class Human
 
 int main()
 {
-	Human eve;
+	Human firstMan;
+	firstMan.SetAge(35);
+	
+	Human firstWoman;
+	firstWoman.SetAge(22);
 
-	cout << "Set Age: ";
-	int inputAge = 0;
-	cin >> inputAge;
-	eve.SetAge(inputAge);
-	cout << "I guess Eve is " << eve.GetAge();
+	cout << "Age of firstMan: " << firstMan.GetAge() << endl;
+	cout << "Age of firstWoman: " << firstWoman.GetAge() << endl;
 
 	return 0;
 
